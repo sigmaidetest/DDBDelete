@@ -7,15 +7,13 @@ exports.handler = function (event, context, callback) {
 
     ddb.delete({
         TableName: 'BTMenu',
-        Key: {
-            'itemCode': itemCode
-        }
+        Key: { 'itemCode': itemCode }
     }).promise().then(function (data) {
         console.log("Deleted", itemCode, data);
-        callback(null, 'Successfully deleted');
+        callback(null, "Deleted");
 
     }).catch(function (err) {
-        console.log("Error", itemCode, err);
+        console.log("Failed", itemCode, err);
         callback(err);
     });
 }
